@@ -1,7 +1,6 @@
 set t_Co=256
 set background=dark
 colorscheme PaperColor
-set number " Enable line numbers
 syntax enable " Enable syntax processing
 set tabstop=4 " Number of spaces per tab (When opening file)
 set softtabstop=4 " Number of spaces shown when editing
@@ -16,3 +15,12 @@ set incsearch " Search as you are typing
 set shiftwidth=4 " Auto indents are 4 spaces
 set autoindent " Turn on auto-indent
 set smartindent " Smart indent like in VSCode
+set relativenumber " Relative line numbers
+
+
+" Plugins
+call plug#begin('~/.vim/plugs')
+
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+
+call plug#end()
