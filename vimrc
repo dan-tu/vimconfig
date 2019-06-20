@@ -20,7 +20,24 @@ set relativenumber " Relative line numbers
 
 " Plugins
 call plug#begin('~/.vim/plugs')
-
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
 call plug#end()
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+        \'javascript.jsx' : {
+            \'extends' : 'jsx',
+        \},
+    \}
+
+
