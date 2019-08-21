@@ -1,6 +1,4 @@
 set t_Co=256
-set background=dark
-colorscheme PaperColor
 syntax enable " Enable syntax processing
 set tabstop=4 " Number of spaces per tab (When opening file)
 set softtabstop=4 " Number of spaces shown when editing
@@ -17,16 +15,27 @@ set autoindent " Turn on auto-indent
 set smartindent " Smart indent like in VSCode
 set relativenumber " Relative line numbers
 
-
 " Plugins
 call plug#begin('~/.vim/plugs')
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-Plug 'pangloss/vim-javascript'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
+Plug 'mhartington/oceanic-next', { 'as': 'OceanicNext' }
 call plug#end()
+"
+" Theme 
+syntax enable
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+colorscheme OceanicNext
+
 
 augroup javascript_folding
     au!
