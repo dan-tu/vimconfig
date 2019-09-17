@@ -4,7 +4,7 @@ set tabstop=4 " Number of spaces per tab (When opening file)
 set softtabstop=4 " Number of spaces shown when editing
 set expandtab " Converts tabs into spaces
 set showcmd " Show command in bottom bar
-set cursorline " Highlights the current line
+"set cursorline " Highlights the current line
 filetype indent on " Loads filetype specific indent files from ~/.vim/indent/*
 set wildmenu " Visual autocomplete for command line
 set showmatch " Highlight matching brackets/parentheses/etc
@@ -39,7 +39,7 @@ colorscheme OceanicNext
 
 augroup javascript_folding
     au!
-    au FileType javascript setlocal foldmethod=syntax
+    au FileType javascript setlocal foldmethod=indent
 augroup END
 
 let g:user_emmet_leader_key='<Tab>'
