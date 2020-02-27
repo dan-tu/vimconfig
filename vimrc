@@ -16,6 +16,7 @@ set autoindent " Turn on auto-indent
 set smartindent " Smart indent like in VSCode
 set relativenumber " Relative line numbers
 set backspace=indent,eol,start
+set background=dark
 
 " Plugins
 call plug#begin('~/.vim/plugs')
@@ -26,7 +27,6 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'mhartington/oceanic-next', { 'as': 'OceanicNext' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 " Plug 'autozimu/LanguageClient-neovim', {
@@ -39,15 +39,21 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'ternjs/tern_for_vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Themes
+Plug 'morhetz/gruvbox'
+" Plug 'mhartington/oceanic-next', { 'as': 'OceanicNext' }
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 " Theme 
-colorscheme OceanicNext
+" colorscheme OceanicNext
+colorscheme gruvbox
 
 augroup javascript_folding
     au!
-    au FileType javascript setlocal foldmethod=syntax
+    au FileType javascript setlocal foldmethod=syntax foldlevel=3
 augroup END
 
 let g:user_emmet_leader_key=','
@@ -114,7 +120,12 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-inoremap <silent> <Enter> <C-r>=<SID>my_cr_function()<CR>
-	function! s:my_cr_function() abort
-	  return deoplete#close_popup() . "\<CR>"
-  endfunction
+inoremap <silent> <Enter> <C-r>=<SID>enter_complete()<CR>
+function! s:enter_complete() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
+
+inoremap <silent> <Space> =<SID>space_complete()<CR>
+function! s:space_complete() abort
+    return deoplete#close_popup() . "\<CR>"
+endfunction
